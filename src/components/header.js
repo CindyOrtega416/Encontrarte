@@ -4,6 +4,7 @@ import UserContext from "../context/user";
 import * as Routes from '../constants/routes'
 import {Link} from "react-router-dom";
 import * as ROUTES from "../constants/routes";
+import { HomeIcon } from '@heroicons/react/solid'
 
 export default function Header() {
     const { firebase } = useContext(FirebaseContext)
@@ -16,10 +17,9 @@ export default function Header() {
                     cursor-pointer">
                         <h1 className="flex justify-center w-full">
                             <Link to={ROUTES.DASHBOARD}>
-                                <img src="/images/logo.svg" alt="Encontrarte" className="mt-2 w-6/12" />
+                                <img src="/images/logo-side.svg" alt="Encontrarte" className="mt-2 w-6/12" />
                             </Link>
                         </h1>
-
                     </div>
                     <div className="text-gray-700 text-center flex items-center align-items">
                         { user ? (
@@ -45,13 +45,17 @@ export default function Header() {
                                 <button
                                     type="button"
                                     title="Sign Out"
-                                    onClick={()=> firebase.auth().signOut()}
-                                    onKeyDown={(event)=> {
+                                    onClick={() => {
+                                        firebase.auth().signOut();
+                                        history.push(ROUTES.LOGIN);
+                                    }}
+                                    onKeyDown={(event) => {
                                         if (event.key === 'Enter') {
-                                            firebase.auth().signOut()
+                                            firebase.auth().signOut();
+                                            history.push(ROUTES.LOGIN);
                                         }
                                     }}
-                                    >
+                                >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         className="h-6 w-6"
@@ -81,6 +85,20 @@ export default function Header() {
                             </>
                         ) : (
                             <>
+                                <Link to={ROUTES.LOGIN} >
+                                    <button
+                                        type="button"
+                                        className="bg-blue-medium
+                                        font-bold text-sm rounded text-white w-20 h-8"
+                                    >Log In</button>
+                                </Link>
+                                <Link to={ROUTES.SIGN_UP}>
+                                    <button
+                                        type="button"
+                                        className="font-bold text-sm rounded text-blue-medium
+                                        w-20 h-8"
+                                    >Sign Up</button>
+                                </Link>
                             </>
                         )
                         }

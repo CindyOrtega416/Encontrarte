@@ -63,11 +63,12 @@ export default function Login() {
                     />
                     <input
                         aria-label="Enter your password"
-                        typeof="password"
+                        type="password"
                         placeholder="Password"
                         className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border
                         border-gray-primary rounded mb-2"
                         onChange={({ target }) => setPassword(target.value)}
+                        required
                     />
                     <button
                         disabled={isInvalid}
