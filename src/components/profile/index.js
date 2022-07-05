@@ -14,15 +14,16 @@ export default function Profile({ user }) {
     }
 
     // we're gonna have an object that's gonna have a profile, a photosCollection, etc
-    // dispatch allows us to update the state
-    const[{ profile, photosCollection, followerCount}, dispatch] =
+    // dispatch allows you to set values. Which is what we're doing in the next useEffect
+    const[{ profile, photosCollection, followerCount}, dispatch] = // i'm using the three values declared on initialState
         useReducer(reducer, initialState)
+
 
     useEffect(()=> {
         async function getProfileInfoAndPhotos() {
             const photos = getUserPhotosByUsername(user.username)
             // once we have this information we can dispatch and say 'look, we need to update the state
-            // so i'm gonna say here is the profile is user (the user information is in there) etc
+            // so i'm gonna say here is the profile (the user information is in there) etc
             dispatch({ profile: user, photosCollection: photos,
                 followerCount: user.followers.length })
         }
@@ -33,7 +34,13 @@ export default function Profile({ user }) {
     }, [user.username])
     return (
         <>
-            <Header />
+            <Header
+                photosCount={photosCollection ? photosCollection.length : 0}
+                profile={profile}
+                followerCount={followerCount}
+                setFollowerCount={dispatch}
+
+            />
             <Photos photos={photosCollection} />
             <p>Hello {user.username}</p>
         </>

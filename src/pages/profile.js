@@ -6,20 +6,19 @@ import Header from "../components/header";
 import UserProfile from '../components/profile';
 
 export default function Profile() {
+    // 1. we get the username (/p/:username)
     const { username } = useParams()  // destructure out username because in ROUTES we have /p/:username
     // we need to see if user exists
     const [user, setUser] = useState(null)
-    const [userExists, setUserExists] = useState(false)
     const history = useNavigate()
 
+    // 2. check if username exists
     useEffect(()=> {
         async function checkUserExists() {
-            const user = await getUserByUsername(username)
-            if (user.length > 0) {
-                setUser(user[0])
-                setUserExists(true)
+            const [user] = await getUserByUsername(username)
+            if (user.userId) {
+                setUser(user)
             } else {
-                setUserExists(false)
                 history.push(ROUTES.NOT_FOUND)
             }
         }
@@ -27,7 +26,7 @@ export default function Profile() {
         checkUserExists()
     }, [username, history])
 
-    return userExists ? (
+    return user?.username ? (
         <div className="bg-gray-background">
             <Header />
             <div className="mx-auto max-w-screen-lg">

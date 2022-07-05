@@ -146,3 +146,20 @@ export async function getUserPhotosByUsername(username) {
                 docId: item.id
             }))
 }
+
+export async function isUserFollowingProfile(loggedInUserUsername, profileUserId) {
+    const result = await firebase
+        .firestore()
+        .collection('users')
+        .where('username', '==', loggedInUserUsername) // cindy (active logged in user)
+        .where('following', 'array-contains', profileUserId) // it's gonna check if Raphael exists in my 'following' array
+        .get()  // get that data
+
+    const [response = {}] = result.docs.map((item)=> ({
+        ...item.data(),
+        docId: item.id
+    }))
+
+    return response.userId
+
+}
