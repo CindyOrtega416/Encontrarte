@@ -30,7 +30,9 @@ module.exports = {
             pink: {
                 medium: '#F6D3CA'
             }
-
         }
+    },
+    variants: {
+        display: ['group-hover']
     }
 }
