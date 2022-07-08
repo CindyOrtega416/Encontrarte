@@ -1,11 +1,12 @@
 import React from "react";
 import Header from "../components/header";
+import ReportForm from "../components/report";
 
 export default function Report() {
     return (
-        <div>
+        <div className="bg-gray-background">
             <Header />
-            <p>I am the report!</p>
+            <ReportForm />
         </div>
     )
 }
