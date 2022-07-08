@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import FirebaseContext from "../context/firebase";
 
+// 4. The auth listener listens on authentication and installs some values on local storage (check it on console)
 export default function useAuthListener() {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('authUser')))
     const { firebase } = useContext(FirebaseContext)

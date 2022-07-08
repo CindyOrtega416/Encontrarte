@@ -12,9 +12,12 @@ export default function Comments({ docId, comments: allComments, posted, comment
         <>
             <div className="p-4 pt-1 pb-4">
                 {comments.length >= 1 && (
-                    <p className="text-sm text-gray-base mb-1 cursor-pointer">
+                    <button
+                        className="text-sm text-gray-base mb-1 cursor-pointer"
+                        type="button"
+                    >
                         View all comments
-                    </p>
+                    </button>
                 )}
                 {comments.slice(0, 3).map((item) => (
                     <p key={`${item.comment}-${item.displayName}`} className="mb-1">

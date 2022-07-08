@@ -4,7 +4,6 @@ import Header from "./header";
 import Image from "./image";
 import Actions from "./actions";
 import Footer from "./footer";
-import {Comment} from "postcss";
 import Comments from "./comments";
 
 export default function Post({ content }) {
@@ -15,7 +14,7 @@ export default function Post({ content }) {
     // -> header, image, actions (like & comment icons), footer, comments
 
     return (
-        <div className="rounded col-span-4 border bg-white border-gray-primary mb-12">
+        <div className="rounded col-span-4 border bg-white border-gray-primary mb-12 ">
             <Header username={content.username} />
             <Image src={content.imageSrc} caption={content.caption} />
             <Actions
@@ -32,6 +31,7 @@ export default function Post({ content }) {
                 commentInput={commentInput}
             />
         </div>
+
     )
 }
 

@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import UserContext from "../context/user";
 import {getPhotos, getUserByUserId} from "../services/firebase";
 
+// 5. it allows us to get photos from the collection of photos for a particular user
 export default function usePhotos() {
     const [photos, setPhotos] = useState(null)
     const {

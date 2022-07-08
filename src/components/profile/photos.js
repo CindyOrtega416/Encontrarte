@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import Skeleton from "react-loading-skeleton";
+import Header from "../post/header";
 
 export default function Photos({ photos }) {
     return (
@@ -63,5 +64,5 @@ export default function Photos({ photos }) {
 }
 
 Photos.propTypes = {
-    photos: PropTypes.array
+    photos: PropTypes.array,
 }

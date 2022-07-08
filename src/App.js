@@ -16,8 +16,14 @@ const Signup = lazy(  () =>  import('./pages/sign-up'));    // example. I only n
 const Dashboard = lazy(  () =>  import('./pages/dashboard'));
 const Profile = lazy(  () =>  import('./pages/profile'));
 const NotFound = lazy(  () =>  import('./pages/not-found'));
+const Map = lazy(()=> import('./pages/map'));
+const Report = lazy(()=> import('./pages/report'));
 
 export default function App() {
+    // 2. we have a AuthListener which basically has the displayName and userId
+    // 3. We bring in protected routes and IsUserLoggedIn
+        // 3.1 IsUserLoggedIn allows you to navigate a user elsewhere if they're logged in
+        // so If I go to the login page and I'm already logged in, it's gonna send me back to dashboard
     const { user } = useAuthListener();
 
   return (
@@ -35,6 +41,8 @@ export default function App() {
                 }
             />
             <Route element={<NotFound />} />
+            <Route path={ROUTES.MAP} element={<Map />} />
+            <Route path={ROUTES.REPORT} element={<Report />} />
           </Routes>
         </Suspense>
       </Router>

@@ -24,8 +24,6 @@ export default function Timeline() {
             ) : (
                 <p className="text-center text-2xl">Follow people to see photos</p>
             )}
-
-        </div>
-
+</div>
     )
 }

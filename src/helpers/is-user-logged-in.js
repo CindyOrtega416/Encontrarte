@@ -3,6 +3,9 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {Route, Navigate} from 'react-router-dom';
 
+// 7. We do a conditional check to see if the user is logged in
+    // If he isn't return standard children
+    // If he is, fly them to dashboard
 export default function IsUserLoggedIn({ user, loggedInPath, children, ...rest }) {
     return (
         <Route
